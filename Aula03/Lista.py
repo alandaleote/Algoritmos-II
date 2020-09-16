@@ -12,28 +12,30 @@ class Lista:
 
     def adicionar_inicio(self, dado):
         no = No(dado)
-        if self.__len__ == 0:
+        if self.tamanho == 0:
             self.inicio = no
             self.fim = no
         else:        
             aux = self.inicio
             aux.anterior = no
             no.proximo = aux
+            self.inicio = no
         self.tamanho += 1
 
     def adicionar_fim(self, dado):
         no = No(dado)
-        if self.__len__ == 0:
+        if self.tamanho == 0:
             self.inicio = no
             self.fim = no
         else:
             aux = self.fim
             aux.proximo = no
             no.anterior = aux
+            self.fim = no
         self.tamanho += 1
 
     def excluir_inicio(self, dado):
-        if self.__len__ == 0:
+        if self.tamanho == 0:
             print( "--Lista Vazia--")
         elif self.tamanho == 1 :
             if self.inicio.dado == dado:
@@ -51,7 +53,7 @@ class Lista:
                 print( "--não consta como início da lista--")       
 
     def excluir_fim(self, dado):
-        if self.__len__ == 0:
+        if self.tamanho == 0:
             print( "--Lista Vazia--")
         elif self.tamanho == 1 :
             if self.fim.dado == dado:
@@ -70,23 +72,23 @@ class Lista:
 
     def imprimir(self):
         aux = self.inicio
-        if self.__len__ == 0:
+        if self.tamanho == 0:
             print("--Lista Vazia--")
         else:
             while(aux):
-            print( str(aux.dado) + "\n" )
-            aux = aux.proximo
-        print( "Tamanho da Lista: " + str(self.__len__))
+                print( str(aux.dado) + "\n" )
+                aux = aux.proximo
+        print( "Tamanho da Lista: " + str(self.tamanho))
 
     def imprimir_inverso(self):
         aux = self.fim
-        if self.__len__ == 0:
+        if self.tamanho == 0:
             print("--Lista Vazia--")
         else:
             while(aux):
-            print( str(aux.dado) + "\n" )
-            aux = aux.anterior
-        print( "Tamanho da Lista: " + str(self.__len__))
+                print( str(aux.dado) + "\n" )
+                aux = aux.anterior
+        print( "Tamanho da Lista: " + str(self.tamanho))
         
 
     
