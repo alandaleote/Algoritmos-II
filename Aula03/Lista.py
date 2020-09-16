@@ -10,54 +10,30 @@ class Lista:
     def __len__(self):
         return self.tamanho 
 
-    def adicionar(self, dado):
+    def adicionar_inicio(self, dado):
         no = No(dado)
         if self.__len__ == 0:
             self.inicio = no
             self.fim = no
-        elif self.inicio = self.fim:
+        else:        
             aux = self.inicio
+            aux.anterior = no
+            no.proximo = aux
+        self.tamanho += 1
+
+    def adicionar_fim(self, dado):
+        no = No(dado)
+        if self.__len__ == 0:
+            self.inicio = no
+            self.fim = no
+        else:
+            aux = self.fim
             aux.proximo = no
             no.anterior = aux
-            self.fim = no
-        else:
-            aux = self.inicio
-            while(aux.proximo):
-                aux.anterior = aux
-                aux = aux.proximo
-            aux.anterior = aux
-            aux.proximo = no
-            self.fim.proximo = no
-            self.fim = no
-        self.tamanho += 1
-        elif self.inicio and !(self.fim):
-            aux = self.inicio
-
-
-
-
-            aux = self.inicio
-            while(aux.proximo):
-                aux = aux.proximo
-            aux.proximo = no
-        else:
-            
         self.tamanho += 1
 
-
-    def imprimir(self):
-        aux = self.inicio
-        if self.inicio == None:
-            print("--Lista Vazia--")
-        else:
-            while(aux):
-            print( str(aux.dado) + "\n" )
-            aux = aux.proximo
-        print( "Tamanho da Lista: " + str(self.__len__))
-        
-
-    def excluir(self, dado):
-        if self.tamanho == 0 :
+    def excluir_inicio(self, dado):
+        if self.__len__ == 0:
             print( "--Lista Vazia--")
         elif self.tamanho == 1 :
             if self.inicio.dado == dado:
@@ -72,11 +48,45 @@ class Lista:
                 self.inicio = aux
                 self.tamanho -= 1
             else:
-                ant = self.inicio
-                aux = ant.proximo
-                while(aux):
-                    if aux.dado == dado:
-                        ant.proximo = aux.proximo
-                    ant = aux
-                    aux = aux.proximo
+                print( "--não consta como início da lista--")       
+
+    def excluir_fim(self, dado):
+        if self.__len__ == 0:
+            print( "--Lista Vazia--")
+        elif self.tamanho == 1 :
+            if self.fim.dado == dado:
+                self.inicio = None
+                self.fim = None
                 self.tamanho -= 1
+            else:
+                print( "--não consta na lista--")
+        else:
+            if self.fim.dado == dado:
+                aux = self.fim.anterior
+                self.fim = aux
+                self.tamanho -= 1
+            else:
+                print( "--não consta como fim da lista--")
+
+    def imprimir(self):
+        aux = self.inicio
+        if self.__len__ == 0:
+            print("--Lista Vazia--")
+        else:
+            while(aux):
+            print( str(aux.dado) + "\n" )
+            aux = aux.proximo
+        print( "Tamanho da Lista: " + str(self.__len__))
+
+    def imprimir_inverso(self):
+        aux = self.fim
+        if self.__len__ == 0:
+            print("--Lista Vazia--")
+        else:
+            while(aux):
+            print( str(aux.dado) + "\n" )
+            aux = aux.anterior
+        print( "Tamanho da Lista: " + str(self.__len__))
+        
+
+    
