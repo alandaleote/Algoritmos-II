@@ -13,3 +13,6 @@ maria.imprimir()
 ana = AlunoEnsinoMeedio(2, 'Ana', 'ab01236', 8)
 
 ana.imprimir()
+
+joao = AlunoEnsinoMeedio(joao.codigo, joao.nome, joao.matricula, 2)
+joao.imprimir()
