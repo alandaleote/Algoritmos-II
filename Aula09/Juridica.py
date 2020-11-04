@@ -6,3 +6,9 @@ class Juridica(Pessoa):
         self._cnpj = cnpj
         self._inscricao_estadual = inscricao_estadual
         self.quantidade_funcionarios = quantidade_funcionarios
+
+    def imprime_cnpj(self):
+        print(self._cnpj)
+    
+    def _emitir_nota_fiscal(self):
+        print("Nota Fiscal")
